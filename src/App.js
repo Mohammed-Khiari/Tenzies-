@@ -76,9 +76,18 @@ useEffect(() => {
      if (allHeld && allSameValue) {
         setTenzies(true)
     }   
+     fetchImage();
 }, [dice])
     
+/////////////////////////////////////////////////////////
+const imageUrl = "https://i.imgur.com/fHyEMsl.jpg";
+const [img, setImg] = useState();
 
+  const fetchImage = async () => {
+    const res = await fetch(imageUrl);
+    const imageBlob = await res.blob();
+    const imageObjectURL = URL.createObjectURL(imageBlob);
+    setImg(imageObjectURL);
 
     return(
         <main>
@@ -89,6 +98,7 @@ useEffect(() => {
                {diceElements}
            </div> 
            <button className="roll-dice"     onClick={rollDice} >{tenzies? 'New Game': 'Roll'}</button>
+            <img src={img} alt="icons" />
         </main>
     )
 }
