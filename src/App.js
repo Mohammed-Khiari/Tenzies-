@@ -88,7 +88,7 @@ const [img, setImg] = useState();
     const imageBlob = await res.blob();
     const imageObjectURL = URL.createObjectURL(imageBlob);
     setImg(imageObjectURL);
-
+  }
     return(
         <main>
             {tenzies && <Confetti />}
